@@ -75,7 +75,9 @@ class MouseHandler:
 class BasicMouseHandler(MouseHandler):
     def __init__(self, toggle_hotkey: str, hotkeys: List[Hotkey]):
         self.hotkeys = hotkeys
-        self.toggle_hotkey = Hotkey(key_name=toggle_hotkey, function=self.toggle_hotkeys, enabled=True)
+
+        keyboard.add_hotkey(toggle_hotkey, lambda: self.toggle_hotkeys)
+
         self.register_hotkeys()
 
     def register_hotkeys(self) -> None:
@@ -136,4 +138,5 @@ class BasicMouseHandler(MouseHandler):
             hotkey.toggle()
 
     def start_emulation(self) -> None:
+        self.toggle_hotkeys()
         keyboard.wait()
