@@ -15,3 +15,6 @@ DOWN = 'k'
 
 # left click
 CLICK = 'right ctrl'
+
+# mouse sensitivity / pixel increment per click
+INCREMENT = 35
