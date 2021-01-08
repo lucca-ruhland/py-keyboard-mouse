@@ -100,7 +100,9 @@ class BasicMouseHandler(MouseHandler):
         up_hotkey = Hotkey(config.UP, mouse.move_up, False)
         down_hotkey = Hotkey(config.DOWN, mouse.move_down, False)
 
-        hotkey_list = [left_hotkey, right_hotkey, up_hotkey, down_hotkey]
+        click_hotkey = Hotkey(config.CLICK, mouse.click, False)
+
+        hotkey_list = [left_hotkey, right_hotkey, up_hotkey, down_hotkey, click_hotkey]
 
         return cls(toggle, hotkey_list)
 
