@@ -17,7 +17,7 @@ Keyboard mouse emulation implemented in pure python
 - use ```l``` to go right
 - use ```h``` to go up
 - use ```k``` to go down
--use ```right CTRL``` for left click
+- use ```right CTRL``` for left click
 
 ### Known Issues
 - keyboard-mouse needs root permissions
@@ -29,6 +29,7 @@ from keyboard_mouse import create_emulator
 
 
 # for default keybindings
+
 default_emulator = create_emulator()
 default_emulator.start_emulation()
 
