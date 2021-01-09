@@ -16,6 +16,7 @@ setuptools.setup(
     install_requires=[
         "keyboard",
         "pyautogui",
+        "configargparse",
     ],
     entry_points={
         "console_scripts": [

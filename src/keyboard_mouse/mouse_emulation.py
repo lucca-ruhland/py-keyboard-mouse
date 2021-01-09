@@ -42,8 +42,9 @@ class Mouse:
 
 
 class BasicMouse:
-    def __init__(self, increment=35):
+    def __init__(self, increment=35, click_duration=0.3):
         self.increment = increment
+        self.click_duration = click_duration
 
     def move_up(self):
         pyautogui.move(0, -self.increment)
@@ -58,7 +59,7 @@ class BasicMouse:
         pyautogui.move(self.increment, 0)
 
     def click(self):
-        pyautogui.click(duration=0.3)
+        pyautogui.click(duration=self.click_duration)
 
 
 class MouseHandler:
@@ -76,7 +77,7 @@ class BasicMouseHandler(MouseHandler):
     def __init__(self, toggle_hotkey: str, hotkeys: List[Hotkey]):
         self.hotkeys = hotkeys
 
-        keyboard.add_hotkey(toggle_hotkey, lambda: self.toggle_hotkeys)
+        keyboard.add_hotkey(toggle_hotkey, lambda: self.toggle_hotkeys())
 
         self.register_hotkeys()
 
@@ -91,16 +92,16 @@ class BasicMouseHandler(MouseHandler):
     def default(cls):
         import keyboard_mouse.default_config as config
 
-        mouse = BasicMouse(config.INCREMENT)
+        mouse = BasicMouse(config.increment)
 
-        toggle = config.TOGGLE_MODE
+        toggle = config.toggle
 
-        left_hotkey = Hotkey(config.LEFT, mouse.move_left, False)
-        right_hotkey = Hotkey(config.RIGHT, mouse.move_right, False)
-        up_hotkey = Hotkey(config.UP, mouse.move_up, False)
-        down_hotkey = Hotkey(config.DOWN, mouse.move_down, False)
+        left_hotkey = Hotkey(config.left, mouse.move_left, False)
+        right_hotkey = Hotkey(config.right, mouse.move_right, False)
+        up_hotkey = Hotkey(config.up, mouse.move_up, False)
+        down_hotkey = Hotkey(config.down, mouse.move_down, False)
 
-        click_hotkey = Hotkey(config.CLICK, mouse.click, False)
+        click_hotkey = Hotkey(config.click, mouse.click, False)
 
         hotkey_list = [left_hotkey, right_hotkey, up_hotkey, down_hotkey, click_hotkey]
 
@@ -109,24 +110,24 @@ class BasicMouseHandler(MouseHandler):
     @classmethod
     def from_config(cls, config: dict):
         try:
-            increment = config['INCREMENT']
+            increment = config['increment']
             mouse = BasicMouse(increment)
 
-            toggle = config['TOGGLE_MODE']
+            toggle = config['toggle']
 
-            left = config['LEFT']
+            left = config['left']
             left_hotkey = Hotkey(left, mouse.move_left, False)
 
-            right = config['RIGHT']
+            right = config['right']
             right_hotkey = Hotkey(right, mouse.move_right, False)
 
-            up = config['UP']
+            up = config['up']
             up_hotkey = Hotkey(up, mouse.move_up, False)
 
-            down = config['DOWN']
+            down = config['down']
             down_hotkey = Hotkey(down, mouse.move_down, False)
 
-            click = config['CLICK']
+            click = config['click']
             click_hotkey = Hotkey(click, mouse.click, False)
 
             hotkey_list = [left_hotkey, right_hotkey, up_hotkey, down_hotkey, click_hotkey]
@@ -136,6 +137,7 @@ class BasicMouseHandler(MouseHandler):
             raise CannotBuildFromConfig
 
     def toggle_hotkeys(self):
+        print('[DEBUG] TOGGLE HOTKEYS')
         for hotkey in self.hotkeys:
             hotkey.toggle()
 
