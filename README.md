@@ -1,5 +1,5 @@
 # py-keyboard-mouse
-Keyboard mouse emulation implemented in pure python
+Mouse emulation via keyboard implemented in pure python.
 
 # Quick Start Guide
 
