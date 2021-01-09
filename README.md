@@ -9,7 +9,19 @@ Keyboard mouse emulation implemented in pure python
 - ```pip install .```
 
 ## How to run mouse emulation 
-- ```keyboard-mouse```
+- ```keyboard-mouse [--flags]```
+
+### flags
+| flag | description |
+| ---- | ----------- |
+| -h, --help | show help message |
+| -c, --config | set path to config file with ini or yaml style |
+| --left | set key for moving cursor left |
+| --right | set key for moving curosor right |
+| --up | set key for moving cursor up |
+| --down | set key for moving cursor down |
+| --toggle | set key to toggle between normal (writing) mode and mouse emulation |
+| --increment | set mouse sensitivity (cursor movement in pixel per key stroke) |
 
 ### default hotkeys
 - use ```CTRL + M``` to toggle between mouse and normal mode
@@ -19,7 +31,12 @@ Keyboard mouse emulation implemented in pure python
 - use ```k``` to go down
 - use ```right CTRL``` for left click
 
-### Known Issues
+# config file
+.ini or .yaml style can be used for configuration files.
+An example is given under [/example/example.config](/example/example.config).
+View https://github.com/bw2/ConfigArgParse for more information on how to create config files.
+
+# Known Issues
 - keyboard-mouse needs root permissions
 - It may be necessary to run ```xhost +``` before starting keyboard-mouse
 
