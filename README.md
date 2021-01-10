@@ -3,6 +3,11 @@ Mouse emulation via keyboard implemented in pure python.
 
 # Quick Start Guide
 
+## Requirements
+Tkinter must be installed on your system.
+- for Debian based systems use ```apt install python3-tk```
+- for Arch based systems use ```pacman -S tk```
+
 ## Installation
 - ```git clone https://github.com/lucca-ruhland/py-keyboard-mouse```
 - ```cd py-keyboard-mouse```
