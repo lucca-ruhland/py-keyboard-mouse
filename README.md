@@ -38,7 +38,7 @@ Tkinter must be installed on your system.
 
 # config file
 .ini or .yaml style can be used for configuration files.
-An example is given under [/example/example.config](/example/example.config).
+An example is given [here](/example/example.config).
 View https://github.com/bw2/ConfigArgParse for more information on how to create config files.
 
 # Known Issues
